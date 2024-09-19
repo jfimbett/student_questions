@@ -1,0 +1,35 @@
+<!-- templates/query_llm.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query LLM for {{ session_date }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Query the LLM for Session {{ session_date }}</h2>
+        <form method="POST">
+            <div class="mb-3">
+                <label for="original_question" class="form-label">Original Question Asked to Students</label>
+                <input type="text" class="form-control" id="original_question" name="original_question" value="{{ original_question }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="question" class="form-label">Your Question</label>
+                <input type="text" class="form-control" id="question" name="question" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Ask LLM</button>
+        </form>
+        {% if question %}
+        <div class="mt-4">
+            <h4>Question:</h4>
+            <p>{{ question }}</p> <!-- Display the question -->
+            <h4>LLM Response:</h4>
+            <p>{{ llm_response }}</p> <!-- Display the response from the OpenAI API -->
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
