@@ -17,6 +17,15 @@
                 <input type="text" class="form-control" id="original_question" name="original_question" value="{{ original_question }}" required>
             </div>
             <div class="mb-3">
+                <label for="group" class="form-label">Select Group</label>
+                <select class="form-select" id="group" name="group" required>
+                    <option value="">Choose...</option>
+                    <option value="M1">M1</option>
+                    <option value="M203_M1">M203 M1 (M21)</option>
+                    <option value="M203_M2">M203 M2 (M22)</option>
+                </select>
+            </div>
+            <div class="mb-3">
                 <label for="question" class="form-label">Your Question</label>
                 <input type="text" class="form-control" id="question" name="question" required>
             </div>

@@ -11,15 +11,29 @@
 <body>
     <div class="container mt-5">
         <h2>Responses for {{ session_date }}</h2>
-        <table class="table">
+        <form method="GET" action="{{ url_for('view_responses', session_date=session_date) }}">
+            <div class="mb-3">
+                <label for="group" class="form-label">Select Group</label>
+                <select class="form-select" id="group" name="group">
+                    <option value="">All Groups</option>
+                    <option value="M1" {% if group == 'M1' %} selected {% endif %}>M1</option>
+                    <option value="M203_M1" {% if group == 'M203_M1' %} selected {% endif %}>M203 M1 (M21)</option>
+                    <option value="M203_M2" {% if group == 'M203_M2' %} selected {% endif %}>M203 M2 (M22)</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+        <table class="table mt-4">
             <thead>
                 <tr>
+                    <th>Group</th>
                     <th>Answer</th>
                 </tr>
             </thead>
             <tbody>
                 {% for response in responses %}
                 <tr>
+                    <td>{{ response['group'] }}</td>
                     <td>{{ response['answer'] }}</td>
                 </tr>
                 {% endfor %}
